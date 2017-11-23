@@ -35,7 +35,7 @@ class MyReplicatorServicer(replicator_pb2.ReplicatorServicer):
             resp = replicator_pb2.Response(
                 operation="delete",
                 key=request.key,
-                data="none"
+                data=""
             )
             self.replicator_queue.put(resp)
             return func(self, request, context)
