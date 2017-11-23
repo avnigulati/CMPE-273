@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+message Request {
+    string data = 1;
+}
+
+message Response {
+    string operation = 1;
+    string key = 2;
+    string data = 3;
+}
+
+message PutOperation {
+    string key = 1;
+    string data = 2;
+}
+
+message DeleteOperation {
+    string key = 1;
+}
+
+message GetRequest{
+}
+
+
+service Replicator{
+   rpc synchronizer(Request) returns (stream Response) {}
+   rpc put(PutOperation) returns (GetRequest){}
+   rpc delete(DeleteOperation) returns (GetRequest){}
+
+}
