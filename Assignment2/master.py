@@ -71,9 +71,9 @@ class MyReplicatorServicer(replicator_pb2.ReplicatorServicer):
 
         while(True):
             response = self.replicator_queue.get()
-            if(response.operation =="put"):
+            if(response.operation == "put"):
                print("Operation " + response.operation + " " + response.key + " " + response.data)
-            else:
+            elif(response.operation == "delete"):
                  print("Operation " + response.operation + " " + response.key )
 
             yield response
